@@ -29,15 +29,16 @@ console.log("Olá",nome, ", voce tem ", idade, "anos.")
 //Exercicio 2
 
 let var1, var2, var3;
+const pergunta1 = "O ceu esta azul ?", pergunta2 = "Voce gosta de cafe ?", pergunta3 ="Esta calor ?"
 
 var1 = prompt("O ceu esta azul ?");
-console.log(var1);
+console.log(pergunta1, "-", var1);
 
 var2 = prompt("Voce gosta de cafe ?");
-console.log(var2);
+console.log(pergunta2, "-", var2);
 
 var3 = prompt("Esta calor ?");
-console.log(var3);
+console.log(pergunta3, "-", var3);
 
 //Exercicio 3
 
