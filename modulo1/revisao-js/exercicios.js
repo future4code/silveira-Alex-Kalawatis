@@ -61,7 +61,31 @@ function retornaMaiorNumero(array) {
 
 // EXERCÍCIO 07
 function retornaObjetoEntreDoisNumeros(num1, num2) {
-
+    const comparaNum = (num1,num2) =>{
+        if(num1>num2){
+            return num1
+        }else{
+            return num2
+        }
+    }
+    const divisivelPorMaior = (num1,num2)=>{
+        aux = comparaNum(num1,num2)
+        if(aux%num1 === 0 && aux%num2 === 0){
+            return true
+        }else{
+            return false
+        }
+    }
+    const diferencaPositiva = (num1,num2)=>{
+        aux = comparaNum(num1,num2)
+        if(aux === num1){
+            return num1 -num2
+        }else{
+            return num2-num1
+        }
+    }
+    const objeto = {maiorNumero:comparaNum(num1,num2),maiorDivisivelPorMenor:divisivelPorMaior(num1,num2),diferenca: diferencaPositiva(num1,num2)}
+    return objeto
 }
 
 // EXERCÍCIO 08
