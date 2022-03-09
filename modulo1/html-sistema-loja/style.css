@@ -23,3 +23,8 @@ footer{
 tr{
     text-align: center;
 }
+.texto-geral{
+    color: red;
+    display: inline;
+    background-color: black;
+}
