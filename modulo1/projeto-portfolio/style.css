@@ -2,7 +2,88 @@
     margin: 0;
     padding: 0;
 }
+.portfolio{
+    background-color: rgb(238, 236, 236);
+}
+
 .container-corpo{
     background-color: rgb(238, 236, 236);
-    margin: 100px;
+    padding: 80px;
+}
+.container-cabecalho{
+    background-color: rgb(238, 236, 236);
+    padding: 10px;
+    text-align: center;
+}
+.container-rodape{
+    background-color: rgb(238, 236, 236);
+    padding: 400px;
+    text-align: center;
+    margin: auto;
+}
+a:hover{
+    font-weight: bold;
+}
+a:active{
+    color: lime;
+}
+a:visited{
+    color: purple;
+}
+.minha-foto{
+    width: 15%;
+    position: absolute;
+    left: 100px;
+    top: 200px;
+}
+.about-me{
+    color: red;
+    position: absolute;
+    top: 80px;
+    left: 500px;
+}
+.projetos{
+    color: red;
+    position:absolute;
+    top: 80px;
+    left: 710px;
+
+}
+.contato{
+    color: red;
+    position:absolute;
+    top: 80px;
+    right: 550px;
+}
+.intro-principal{
+    position: absolute;
+    top: 350px;
+    font-family: 'Times New Roman', Times, serif;
+    font-size: large;
+    text-align: center;
+
+}
+.sobremim-cabecalho{
+    background-color: rgb(238, 236, 236);
+    padding: 40px;
+    text-align: center;
+}
+.titulo-formacao{
+    position: absolute;
+    top: 220px;
+}
+.list-formacao{
+    position: absolute;
+    text-align: left;
+    top: 250px;
+}
+li{
+    list-style: none;
+}
+.intro-about{
+    position: absolute;
+    top: 200px;
+    font-family: 'Times New Roman', Times, serif;
+    font-size: large;
+    text-align: justify;
 }
