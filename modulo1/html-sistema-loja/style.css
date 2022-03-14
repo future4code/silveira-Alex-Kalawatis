@@ -1,0 +1,30 @@
+header{
+    color: red;
+    background-color: black;
+    margin: 20px;
+    text-align: center;
+}
+footer{
+    color: white;
+    background-color: black;
+}
+.funcionario-ceo{
+    color: red;
+    font-weight: bold;
+    text-align: center;
+}
+.funcionario{
+    color: blue;
+    text-align: center;
+}
+.tabela-estoque{
+    background-color: blue;
+}
+tr{
+    text-align: center;
+}
+.texto-geral{
+    color: red;
+    display: inline;
+    background-color: black;
+}
