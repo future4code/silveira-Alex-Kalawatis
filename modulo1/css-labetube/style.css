@@ -21,8 +21,8 @@ footer{
 main{   
     display: grid;
     grid-template-columns: repeat(4, 1fr);
-    row-gap: 15px;
-    column-gap: 15px;
+    row-gap: 3vh;
+    column-gap: 2vw;
     align-items: center;
     justify-items:center ;
     flex-grow: 1;
@@ -38,13 +38,13 @@ body{
 .detalhe-video1{
     display: flex;
     flex-direction: column;
-    min-height: 100vh;
+    min-height: 85vh;
 
 }
 .detalhe-video2{
     display: flex;
     flex-direction: column;
-    min-height: 100vh;
+    min-height: 85vh;
 
 }
 
@@ -61,11 +61,11 @@ body{
     width: 100%;
 }
 .card-video>p{
-    font-size: 25px;
+    font-size: 125%;
 }
 input{
-    width: 200px;
-    height: 30px;
+    width: 105%;
+    height: 4vh;
 }
 a:hover{
     color: darkgray;
@@ -80,9 +80,22 @@ main>a{
     text-decoration: solid;
 }
 .container-video{
-    margin: 15px
+    margin: 15px;
+    font-size: 125%;
 }
 .container-video>video{
-    width: 250%;
+    width: 70vw;
     
+}
+@media screen and (min-device-width : 320px) and (max-device-width : 480px) {
+    main{
+        grid-template-columns: 1fr;
+    }
+    .detalhe-video1{
+        justify-content: center;
+        align-items: center;
+    }
+    .container-video>video{
+        width: 100%;
+    }
 }
