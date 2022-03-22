@@ -41,7 +41,6 @@ function App() {
           nome="Alex Maiolino Kalawatis" 
           descricao="Oi, eu sou o Alex Maiolino Kalawatis. Sou um dos alunos da Labenu. Adoro tecnologia e suas peculiaridades, programar está virando paixão e cada vez mais me interesso pelo assunto."
         />
-        
         <ImagemButton 
           imagem="https://cdn-icons-png.flaticon.com/512/929/929750.png" 
           texto="Ver mais"
@@ -58,7 +57,6 @@ function App() {
           tipo="Endereço: "
           conteudo=" Rua Silveira, 324, Dev - Labenu. l337"
         />
-
       </PageSecCont>
 
       <PageSecCont>
@@ -68,7 +66,6 @@ function App() {
           nome="Labenu" 
           descricao="Aluno em formação da Labenu !" 
         />
-        
         <CardGrande 
           imagem="http://www.lem.civ.puc-rio.br/wp-content/uploads/2017/03/LOGO_header.png" 
           nome="LEM PUC-Rio" 

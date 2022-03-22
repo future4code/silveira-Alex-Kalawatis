@@ -20,7 +20,6 @@ function ImagemButton(props) {
             <ImgButton src={ props.imagem }/>
             <p>{ props.texto }</p>
         </ImageButtonCont>
-
     )
 }
 
