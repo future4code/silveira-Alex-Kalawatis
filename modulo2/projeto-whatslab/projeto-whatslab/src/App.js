@@ -16,7 +16,7 @@ const AppLayout = styled.div`
   flex-direction: column;
   flex: 1;
   border: 1px solid black;
-  max-width: 31.25em;
+  max-width: 33.25em;
   height: 100vh;
   background-color: beige;
   justify-content: center;
@@ -35,15 +35,20 @@ class App extends React.Component {
     super()
     this.state ={message: []}
   }
+  newMessage= (message) =>{
+    this.setState({message: [...this.state.message,message]})
+  }
 
   render(){
     return (
       <AppLayout>
         <GlobalStyle/>
         <MessageBox>
-        
+          {
+          this.state.message.map((message,index) => <p key={index}><span>{message.user}</span>{': ' + message.text}</p> )
+          }
         </MessageBox>
-        <Message/>
+        <Message newMessage={this.newMessage}/>
         
       </AppLayout>
     );
