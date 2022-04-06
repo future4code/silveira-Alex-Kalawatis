@@ -2,6 +2,27 @@ import React from "react";
 import styled from 'styled-components'
 import axios from "axios";
 
+const CadastroContainer = styled.div`
+  display: flex;
+  flex-direction: column;
+  width: 15%;
+  justify-content: space-evenly;
+  align-items: center;
+  border: 1px solid black;
+  margin: 20px;
+  border-radius:10px ;
+  box-shadow: 3px 3px 5px darkgrey;
+`
+const InputDefault = styled.input`
+    margin: 1em;
+`
+const ButtonCadastro = styled.button`
+    margin-bottom: 0.5em;
+`
+const PageContainer = styled.div`
+    display: flex;
+    justify-content: center;
+`
 export default class Cadastro extends React.Component{
     state = {
         name: '',
@@ -36,21 +57,24 @@ export default class Cadastro extends React.Component{
     }
     render(){
         return(
-            <div>
-                <input
-                    placeholder="Nome"
-                    type="text"
-                    value={this.state.name}
-                    onChange={this.onNameChange}
-                />
-                   <input
-                    placeholder="Email"
-                    type="text"
-                    value={this.state.email}
-                    onChange={this.onEmailChange}
-                />
-                <button onClick={this.postCreateUser}>Criar Usuario</button>
-            </div>
+            <PageContainer>
+                <CadastroContainer>
+                    <InputDefault
+                        placeholder="Nome"
+                        type="text"
+                        value={this.state.name}
+                        onChange={this.onNameChange}
+                    />
+                    <InputDefault
+                        placeholder="Email"
+                        type="text"
+                        value={this.state.email}
+                        onChange={this.onEmailChange}
+                    />
+                    <ButtonCadastro onClick={this.postCreateUser}>Criar Usuario</ButtonCadastro>
+                </CadastroContainer>
+            </PageContainer>
+            
         )
     }
 

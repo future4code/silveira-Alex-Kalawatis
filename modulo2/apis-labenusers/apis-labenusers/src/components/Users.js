@@ -2,9 +2,28 @@ import React from "react";
 import styled from 'styled-components'
 import axios from "axios";
 
-const BotaoApaga = styled.span`
-    color: red;
+const BotaoApaga = styled.button`
+    width: 10%;
+    margin: 5px;
 
+`
+const CardUser = styled.div`
+    display: flex;
+    flex-direction: column;
+    width: 15%;
+    align-items: center;
+    border: 1px solid black;
+    padding: 10px;
+    margin: 10px;
+    background-color: whitesmoke;
+    box-shadow: 3px 3px 5px darkgrey;
+    border-radius: 10px;
+
+`
+const UsersContainer = styled.div`
+    display:flex;
+    flex: 1;
+    
 `
 
 
@@ -35,14 +54,16 @@ export default class Users extends React.Component{
             console.log(error)
         })   
     }
-    deleteUser = idUsuario =>{
-        const url =`https://us-central1-labenu-apis.cloudfunctions.net/labenusers/users/${idUsuario}`
+    deleteUser = user =>{
+        const url =`https://us-central1-labenu-apis.cloudfunctions.net/labenusers/users/${user.id}`
         const headers ={
             headers:{
                 Authorization: 'alex-kalawatis-silveira'
             }
         }
-        axios.delete(url,headers).then(()=>{
+        if(window.confirm(`Tem certeza que deseja deletar ${user.name} ?`))
+        axios.delete(url,headers)
+        .then(()=>{
             alert("Usuario apagado com sucesso")
             this.getAllUsers()
         })
@@ -55,18 +76,18 @@ export default class Users extends React.Component{
 
         const listaUsuario = this.state.listaDeUsuario.map((listaDeUsuario) =>{
             return(
-                <li key={listaDeUsuario.nome}>
+                <CardUser key={listaDeUsuario.id}>
                     {listaDeUsuario.name}
-                    <BotaoApaga onClick={() => this.deleteUser(listaDeUsuario.id)}> x</BotaoApaga>
-                </li>
+                    <BotaoApaga onClick={() => this.deleteUser(listaDeUsuario)}>X</BotaoApaga>
+                </CardUser>
             )
             
         })
         return(
-            <div>
-                <ul>{listaUsuario}</ul>
+            <UsersContainer>
+                {listaUsuario}
+            </UsersContainer>
 
-            </div>
         )
 
     }
