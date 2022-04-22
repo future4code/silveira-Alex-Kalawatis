@@ -1,6 +1,7 @@
 import React,{useState} from "react";
 import InitialPage  from "./pages/InitialPage/InitialPage";
 import MatchPage from "./pages/MatchPage/MatchPage"
+import { GlobalStyle, MainApp } from "./style";
 
 function App() {
   const [page,setPage]=useState('home')
@@ -20,9 +21,10 @@ function App() {
   }
   
   return (
-    <div className="App">
+    <MainApp>
+      <GlobalStyle/>
       {changePage()}
-    </div>
+    </MainApp>
   );
 }
 
