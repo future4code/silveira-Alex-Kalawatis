@@ -2,21 +2,23 @@ import styled from 'styled-components'
 import IconButton from '@material-ui/core/IconButton';
 import FavoriteIcon from '@material-ui/icons/Favorite';
 import ClearOutlinedIcon from '@material-ui/icons/ClearOutlined';
-import DoubleArrowIcon from '@material-ui/icons/DoubleArrow';
+import PeopleAltIcon from '@material-ui/icons/PeopleAlt';
 import { styled as Styled } from '@material-ui/core/styles';
 
 
 export const PageContainer = styled.div`
     display: flex;
     flex-direction: column;
+    width: 25em;
+    height: 37.5em;
     max-width: 25em;
     max-height: 37.5em;
     border: 1px solid black;
     background-color: white;
     border-radius: 5px;
     img{
-        width:21.875em;
-        height: 430px;
+        width:22.5em;
+        height: 28.75em;
     }
 
 `
@@ -26,7 +28,7 @@ export const Header = styled.header`
     width: 23.125em;
     img{
         position: relative;
-        top:30%;
+       /*  top:7%; */
         left: 30%;
         width: 9.375em;
         height: 100%;
@@ -44,6 +46,7 @@ export const CenterBox = styled.div`
         color:white;
         font-size: 20px;
         padding: 5px;
+        font-family: Arial, Helvetica, sans-serif;
     }
 
     > div{
@@ -65,26 +68,30 @@ const MyLikeButton = Styled(IconButton)({
     
 });
 const MyMatchPageButton = Styled(IconButton)({
-    color: '#762D93'
+    color: '#762D93',
+    position: 'relative',
+    left: '7%',
+
 });
 export function LikeButton(props){
     return(
-        <MyLikeButton size='large' onClick={()=>props.click(true)} >
-            <FavoriteIcon/>
+        <MyLikeButton onClick={()=>props.click(true)} >
+            <FavoriteIcon fontSize='large'/>
         </MyLikeButton>
     )
 }
 export function DislikeButton(props){
     return(
         <IconButton onClick={()=>props.click(false)}>
-            <ClearOutlinedIcon/>
+            <ClearOutlinedIcon fontSize='large'/>
         </IconButton>
     )
 }
+
 export  function MatchPageButton(props){
     return(
         <MyMatchPageButton  onClick={props.onClick} >
-            <DoubleArrowIcon/>
+            <PeopleAltIcon fontSize='large'/>
         </MyMatchPageButton>
     )
 }

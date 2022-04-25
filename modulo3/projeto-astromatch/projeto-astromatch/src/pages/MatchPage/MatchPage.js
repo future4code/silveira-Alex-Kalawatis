@@ -1,71 +1,64 @@
 import React, { useEffect, useState } from "react";
 import axios from "axios";
-import styled from 'styled-components'
-import Box from '@material-ui/core/Box'
+import { MatchContainer, Header, PageContainer, ProfilePhoto,ClearButton,ReturnToSwipe } from "./style";
+import Logo from "../../assets/img/astromatch.png"
 
-const MatchContainer = styled.div`
-    display: flex;
-    border: 1px solid black;
-    max-width: 25em;
-    justify-content: space-between;
-    margin: 10px;
-    padding: 10px;
-    img{
-        max-width: 50px;
-        border-radius: 50%;
-    }
-`
-export default function MatchPage(props){
-    const [matchList,setMatchList]= useState([])
 
-    useEffect(()=>{
+export default function MatchPage(props) {
+    const [matchList, setMatchList] = useState([])
+
+    useEffect(() => {
         getMatches()
-    },[])
+    }, [])
 
-    const getMatches = ()=>{
+    const getMatches = () => {
         axios
-        .get('https://us-central1-missao-newton.cloudfunctions.net/astroMatch/Alex-Kalawatis-Silveira/matches')
-        .then((resp)=>{
-            console.log(resp)
-            setMatchList(resp.data.matches)
-        })
-        .catch((err)=>{
-            console.log(err)
-        })
+            .get('https://us-central1-missao-newton.cloudfunctions.net/astroMatch/Alex-Kalawatis-Silveira/matches')
+            .then((resp) => {
+                console.log(resp)
+                setMatchList(resp.data.matches)
+            })
+            .catch((err) => {
+                console.log(err)
+            })
     }
     console.log(matchList)
-    const listOfMatches = matchList.map((matches)=>{
-        return(
+    const listOfMatches = matchList.map((matches) => {
+        return (
             <MatchContainer>
-                <img src={matches.photo} alt={'Profile_Photo'}/>
+                <ProfilePhoto src={matches.photo} alt={'Profile_Photo'} />
                 <p>{matches.name}</p>
             </MatchContainer>
         )
     })
-    const clearMatch = () =>{
-        const headers ={
-            headers:{
+    const clearMatch = () => {
+        const headers = {
+            headers: {
                 "Content-Type": "application/json"
             }
         }
-        axios.put('https://us-central1-missao-newton.cloudfunctions.net/astroMatch/Alex-Kalawatis-Silveira/clear',headers)
-        .then((resp)=>{
-            console.log(resp)
-        })
-        .catch((err)=>{
-            console.log(err)
-        })
+        axios.put('https://us-central1-missao-newton.cloudfunctions.net/astroMatch/Alex-Kalawatis-Silveira/clear', headers)
+            .then((resp) => {
+                console.log(resp)
+            })
+            .catch((err) => {
+                console.log(err)
+            })
     }
 
-    return(
+    return (
         <div>
-            <header>
-                <button onClick={()=>props.changePage('home')}>voltar</button>
-            </header>
-            <div>
-                {listOfMatches}
-            </div>
-            <button onClick={clearMatch}>Limpar Matches</button>
+            <PageContainer>
+                <Header>
+                    <ReturnToSwipe onClick={() => props.changePage('home')}/>
+                    <img src={Logo} alt='app_logo' />
+                </Header>
+                <hr/>
+                <ul>
+                    {listOfMatches}
+                </ul>
+            </PageContainer>
+            <ClearButton click={clearMatch}/>
         </div>
     )
 }
