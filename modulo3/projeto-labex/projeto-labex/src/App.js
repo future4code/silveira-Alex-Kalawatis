@@ -1,11 +1,10 @@
 import React from "react";
-import HomePage from "./pages/HomePage/HomePage";
-import TripListPage from "./pages/TripListPage/TripListPage";
+import {Router} from "./routes/Router"
 
 function App() {
   return (
     <div className="App">
-      <TripListPage/>
+      <Router/>
     </div>
   );
 }

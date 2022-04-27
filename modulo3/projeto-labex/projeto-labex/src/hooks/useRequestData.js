@@ -24,6 +24,6 @@ export const useRequestData = (url) =>{
     useEffect(()=>{
         getData()
     },[url])
-    return [data, isLoading,error]
+    return [data, isLoading,error,getData]
 }
 
