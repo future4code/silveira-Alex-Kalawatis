@@ -2,13 +2,15 @@ import React from "react"
 import { useRequestData, } from "../../hooks/useRequestData";
 import axios from 'axios';
 import { BASE_URL } from "../../constants/urls"
-import { goToHomePage } from "../../routes/coordinator";
+import { goToHomePage, goToCreateTripPage } from "../../routes/coordinator";
 import AdminHomeCard from "../../components/AdminHomeCard/AdminHomeCard"
 import { useNavigate } from "react-router-dom";
+import { useProtectedPage } from "../../hooks/useProtectedPage";
 
 
 
 export default function AdminHomePage() {
+    useProtectedPage()
     const navigate = useNavigate()
     const [trips, isLoading, error, getData] = useRequestData(`${BASE_URL}trips`)
 
@@ -30,9 +32,13 @@ export default function AdminHomePage() {
     }
     const listOfTrips = trips && trips.trips.map((trip) => {
         return (
-            <AdminHomeCard name={trip.name} delTrip={deleteTrip} id={trip.id} />
+            <AdminHomeCard key={trip.id} name={trip.name} delTrip={deleteTrip} id={trip.id} />
         )
     })
+    const logout = (navigate) =>{
+        localStorage.removeItem('token')
+        goToHomePage(navigate)
+    }
 
 
     return (              
@@ -41,8 +47,8 @@ export default function AdminHomePage() {
                 <h1>Painel de Admin</h1>
                 <div>
                     <button onClick={()=> goToHomePage(navigate)}>Voltar</button>
-                    <button>Criar Viagem</button>
-                    <button>Logout</button>
+                    <button onClick={()=> goToCreateTripPage(navigate)}>Criar Viagem</button>
+                    <button onClick={()=>logout(navigate)}>Logout</button>
                 </div>
 
             </div>

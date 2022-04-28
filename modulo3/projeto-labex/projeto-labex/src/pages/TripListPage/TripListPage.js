@@ -1,6 +1,6 @@
 import React from "react";
 import { useRequestData } from '../../hooks/useRequestData'
-import { goToHomePage } from "../../routes/coordinator";
+import { goToHomePage, goToAppFormPage } from "../../routes/coordinator";
 import { useNavigate } from "react-router-dom";
 
 export default function TripListPage() {
@@ -22,7 +22,7 @@ export default function TripListPage() {
         <div>
             <div>
                 <button onClick={() => goToHomePage(navigate)}>voltar</button>
-                <button>Inscrever-se</button>
+                <button onClick={() => goToAppFormPage(navigate)}>Inscrever-se</button>
             </div>
             <div>
                 <h1>Lista de Viagens</h1>
