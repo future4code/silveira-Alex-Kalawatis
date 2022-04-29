@@ -2,7 +2,7 @@ import React from "react"
 import { useRequestData, } from "../../hooks/useRequestData";
 import axios from 'axios';
 import { BASE_URL } from "../../constants/urls"
-import { goToHomePage, goToCreateTripPage } from "../../routes/coordinator";
+import { goToHomePage, goToCreateTripPage, goToTripDetailsPage } from "../../routes/coordinator";
 import AdminHomeCard from "../../components/AdminHomeCard/AdminHomeCard"
 import { useNavigate } from "react-router-dom";
 import { useProtectedPage } from "../../hooks/useProtectedPage";
@@ -32,7 +32,7 @@ export default function AdminHomePage() {
     }
     const listOfTrips = trips && trips.trips.map((trip) => {
         return (
-            <AdminHomeCard key={trip.id} name={trip.name} delTrip={deleteTrip} id={trip.id} />
+            <AdminHomeCard detail={goToTripDetailsPage} nav={navigate} key={trip.id} name={trip.name} delTrip={deleteTrip} id={trip.id} />
         )
     })
     const logout = (navigate) =>{
