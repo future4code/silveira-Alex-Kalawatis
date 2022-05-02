@@ -6,6 +6,8 @@ import { goToAdminHomePage } from "../../routes/coordinator"
 import {useProtectedPage} from "../../hooks/useProtectedPage"
 import { BASE_URL } from "../../constants/urls"
 import axios from "axios"
+import {CreateTripPageConteiner,FormStyled,TitleCreateTripPage,CreteTripBtn} from "./style"
+import {BackBtn} from "../AppFormPage/style"
 
 
 
@@ -34,11 +36,15 @@ export default function CreateTripPage(){
         e.preventDefault()
         createTrip(form,clear)
     }
+    const today = new Date()
+    const stringToday = today.getFullYear() + "-" +
+    ("0" + (today.getMonth() + 1)).substr(-2) + "-"
+    + ("0" + today.getDate()).substr(-2)
 
     return(
-        <div>
-            <h1>Criar Viagem</h1>
-            <form onSubmit={onClickCreateTrip}>
+        <CreateTripPageConteiner>
+            <TitleCreateTripPage>Criar Viagem</TitleCreateTripPage>
+            <FormStyled onSubmit={onClickCreateTrip}>
                 <input
                 placeholder="Nome"
                 name="name"
@@ -66,6 +72,7 @@ export default function CreateTripPage(){
                 type='date'
                 value={form.date}
                 onChange={onChange}
+                min={stringToday}
                 required
                 />
                 <input
@@ -86,10 +93,10 @@ export default function CreateTripPage(){
                 required
                 />
                 <div>
-                    <button onClick={()=>goToAdminHomePage(navigate)}>Voltar</button>
-                    <button type="submit">Criar</button>
+                    <BackBtn goTo={goToAdminHomePage} nav={navigate}/>
+                    <CreteTripBtn/>
                 </div>
-            </form>
-        </div>
+            </FormStyled>
+        </CreateTripPageConteiner>
     )
 }

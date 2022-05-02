@@ -1,5 +1,6 @@
 import axios from "axios";
 import React from "react"
+import { LoginPageConteiner, TitleLoginPage,FormStyled,BackBtn,LoginBtn } from "./style";
 import { BASE_URL } from "../../constants/urls"
 import { useNavigate } from "react-router-dom";
 import { goToHomePage, goToAdminHomePage } from "../../routes/coordinator";
@@ -32,12 +33,9 @@ export default function LoginPage() {
 
 
     return (
-        <div>
-            <div>
-                <h1>Login</h1>
-            </div>
-            <div>
-                <form onSubmit={onClickLogin}>
+        <LoginPageConteiner>
+                <TitleLoginPage>Login</TitleLoginPage>
+                <FormStyled onSubmit={onClickLogin}>
                     <input
                         placeholder="E-mail"
                         name="email"
@@ -55,11 +53,10 @@ export default function LoginPage() {
                         required
                     />
                     <div>
-                        <button onClick={() => goToHomePage(navigate)}>Voltar</button>
-                        <button type='submit'>Entrar</button>
+                        <BackBtn goTo={goToHomePage} nav={navigate}/>   
+                        <LoginBtn/>
                     </div>
-                </form>
-            </div>
-        </div>
+                </FormStyled>
+        </LoginPageConteiner>
     )
 }

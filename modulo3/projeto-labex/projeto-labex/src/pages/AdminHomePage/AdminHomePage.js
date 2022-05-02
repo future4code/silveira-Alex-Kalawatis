@@ -6,6 +6,7 @@ import { goToHomePage, goToCreateTripPage, goToTripDetailsPage } from "../../rou
 import AdminHomeCard from "../../components/AdminHomeCard/AdminHomeCard"
 import { useNavigate } from "react-router-dom";
 import { useProtectedPage } from "../../hooks/useProtectedPage";
+import { AdminHomeContainer,ButtomContainer,TitleAdminPage,BackBttn,CreateBtn,LogoutBtn } from "./style";
 
 
 
@@ -42,24 +43,24 @@ export default function AdminHomePage() {
 
 
     return (              
-        <div>
+        <AdminHomeContainer>
             <div>
-                <h1>Painel de Admin</h1>
-                <div>
-                    <button onClick={()=> goToHomePage(navigate)}>Voltar</button>
-                    <button onClick={()=> goToCreateTripPage(navigate)}>Criar Viagem</button>
-                    <button onClick={()=>logout(navigate)}>Logout</button>
-                </div>
+                <TitleAdminPage>Painel de Admin</TitleAdminPage>
+                <ButtomContainer>
+                    <BackBttn goTo={goToHomePage} nav={navigate}/>
+                    <CreateBtn goTo={goToCreateTripPage} nav={navigate}/>
+                    <LogoutBtn logOut={logout} nav={navigate}/>
+                </ButtomContainer>
 
             </div>
-            {isLoading && <h1>Carregando...</h1>}
-            {!isLoading && error && <h1>Nao carregou</h1>}
+            {isLoading && <TitleAdminPage>Carregando...</TitleAdminPage>}
+            {!isLoading && error && <TitleAdminPage>Nao carregou</TitleAdminPage>}
             {!isLoading && listOfTrips &&
                 (listOfTrips.length > 0 ? (
                     <ul>{listOfTrips}</ul>
                 ) : (
-                    "Viagens nao encontradas"
+                    <TitleAdminPage>"Viagens nao encontradas"</TitleAdminPage>
                 ))}
-        </div>
+        </AdminHomeContainer>
     )
 }

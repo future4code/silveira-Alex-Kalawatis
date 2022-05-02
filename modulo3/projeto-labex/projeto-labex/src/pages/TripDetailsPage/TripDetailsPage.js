@@ -1,11 +1,12 @@
 import React, { useEffect, useState } from "react"
 import axios from "axios"
-import styled from 'styled-components'
+import { TripDetailContainer,TitleTripDetailPage,StyledLi } from "./style"
 import TripDetailCard from "../../components/TripDetailCard/TripDetailCard"
 import { useNavigate, useParams } from "react-router-dom"
 import { goToAdminHomePage } from "../../routes/coordinator"
 import { BASE_URL } from '../../constants/urls'
 import CandidateCard from "../../components/CanditateCard/CandidateCard"
+import { BackBtn } from "../AppFormPage/style"
 
 export default function TripDetailsPage() {
     const navigate = useNavigate()
@@ -40,7 +41,7 @@ export default function TripDetailsPage() {
             }
         }
         const body ={
-            approved: choice
+            approve: choice
         }
         axios.put(`${BASE_URL}trips/${pathParams.id}/candidates/${candidateId}/decide`,body,Headers)
         .then((resp)=>{
@@ -69,12 +70,12 @@ export default function TripDetailsPage() {
         />
     })
     const listOfApproved = tripDetail.approved && tripDetail.approved.map((c)=>{
-        return <li key={c.id}>{c.name}</li>
+        return <StyledLi key={c.id}>{c.name}</StyledLi>
     })
     
 
     return (
-        <div>
+        <TripDetailContainer>
             <div>
                 <TripDetailCard
                     name={tripDetail.name}
@@ -83,15 +84,15 @@ export default function TripDetailsPage() {
                     date={tripDetail.date}
                     durationInDays={tripDetail.durationInDays} />
             </div>
-            <button onClick={() => goToAdminHomePage(navigate)}>Voltar</button>
+            <BackBtn goTo={goToAdminHomePage} nav={navigate}/>
             <div>
-                <h2>Candidatos Pendentes</h2>
-                {listOfCandidates && listOfCandidates.length>0 ? listOfCandidates:<p>Não existe candidatos pendentes</p>}
+                <TitleTripDetailPage>Candidatos Pendentes</TitleTripDetailPage>
+                {listOfCandidates && listOfCandidates.length>0 ? listOfCandidates:<TitleTripDetailPage>Não existe candidatos pendentes</TitleTripDetailPage>}
             </div>
             <div>
-                <h2>Candidatos Aprovados</h2>
-                {listOfApproved && listOfApproved.length>0 ? listOfApproved:<p>Não existe candidatos aprovados</p>}
+                <TitleTripDetailPage>Candidatos Aprovados</TitleTripDetailPage>
+                {listOfApproved && listOfApproved.length>0 ? listOfApproved:<TitleTripDetailPage>Não existe candidatos aprovados</TitleTripDetailPage>}
             </div>
-        </div>
+        </TripDetailContainer>
     )
 }

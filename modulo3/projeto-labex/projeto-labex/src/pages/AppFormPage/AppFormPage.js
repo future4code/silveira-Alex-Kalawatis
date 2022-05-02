@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import axios from "axios";
-import styledComponents from "styled-components";
+import { FormPageConteiner,TitleFormPage,FormStyled,BackBtn,SingBtn } from "./style";
 import { BASE_URL } from "../../constants/urls";
 import { useForm } from "../../hooks/useForm"
 import { countries } from "../../constants/countries";
@@ -39,10 +39,9 @@ export default function AppFormPage() {
     }
     console.log(form)
     return (
-        <div>
-            <h1>Increver-se</h1>
-            <div>
-                <form onSubmit={onClickSendForm}>
+        <FormPageConteiner>
+            <TitleFormPage>Increver-se</TitleFormPage>
+                <FormStyled onSubmit={onClickSendForm}>
                     <select defaultValue={""} onChange={onChangeTripId}>
                         <option value="" disabled>Escolha uma viagem</option>
                         {tripsOption}
@@ -97,12 +96,11 @@ export default function AppFormPage() {
                         })}
                     </select>
                     <div>
-                        <button onClick={() => goToHomePage(navigate)}>Voltar</button>
-                        <button type='submit'>Enviar Candidatura</button>
+                        <BackBtn goTo={goToHomePage} nav={navigate}/>
+                        <SingBtn>Enviar Candidatura</SingBtn>
                     </div>
-                </form>
-            </div>
+                </FormStyled>
 
-        </div>
+        </FormPageConteiner>
     )
 }

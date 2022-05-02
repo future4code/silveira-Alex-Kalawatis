@@ -1,21 +1,22 @@
 import React from "react";
+import { CandidateCardContainer,AproveBtn,DeclineBtn } from "./style";
 
 export default function CandidateCard(props) {
 
     return (
-        <div>
+        <CandidateCardContainer>
             <div>
-                <p>Nome: {props.name}</p>
-                <p>Profissão: {props.profession}</p>
-                <p>Idade: {props.age}</p>
-                <p>País: {props.country}</p>
-                <p>Texto de Candidatura: {props.applicationText}</p>
+                <p><b>Nome:</b> {props.name}</p>
+                <p><b>Profissão:</b> {props.profession}</p>
+                <p><b>Idade:</b> {props.age}</p>
+                <p><b>País:</b> {props.country}</p>
+                <p><b>Texto de Candidatura:</b> {props.applicationText}</p>
             </div>
             <div>
-                <button onClick={()=>props.decide(props.candidateId,true)}>Aprovar</button>
-                <button onClick={()=>props.decide(props.candidateId,false)}>Reprovar</button>
+                <AproveBtn decide={props.decide} candidateId={props.candidateId}/>
+                <DeclineBtn decide={props.decide} candidateId={props.candidateId}/>
             </div>
 
-        </div>
+        </CandidateCardContainer>
     )
 }
