@@ -11,7 +11,7 @@ function SignUpPage() {
 
   const onClickSignUp = e=>{
     e.preventDefault()
-    signUp(form,navigate)
+    signUp(form,navigate,clear)
   }
 
   return (

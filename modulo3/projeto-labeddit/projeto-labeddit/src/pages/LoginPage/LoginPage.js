@@ -26,9 +26,9 @@ function LoginPage() {
         <EmailLoginInput
           placeholder="E-mail"
           name="email"
+          type="email"
           value={form.email}
           onChange={onChange}
-          type="text"
           required
         />
         <PasswordLoginInput

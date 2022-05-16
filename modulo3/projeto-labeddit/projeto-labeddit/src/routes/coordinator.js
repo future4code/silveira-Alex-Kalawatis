@@ -7,6 +7,6 @@ export const goToLoginPage = (navigate) =>{
 export const goToSignInPage = (navigate) =>{
     navigate("/signin")
 }
-export const goToPostPage = (navigate) =>{
-    navigate("/post")
+export const goToPostPage = (navigate,id) =>{
+    navigate(`post/${id}`)
 }

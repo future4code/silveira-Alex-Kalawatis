@@ -16,8 +16,11 @@ const GlobalStyle = createGlobalStyle`
   const AppContainer = styled.div`
   display:flex;
   justify-content: center;
-  align-items: center;
+  flex: 1;
+  background-image: linear-gradient(to top, #accbee 0%, #e7f0fd 100%);
   height: 100vh;
+  width: 100vw;
+  overflow: auto;
 `
 
 function App() {

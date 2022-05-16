@@ -10,7 +10,7 @@ export const useRequestData = (url) =>{
     const getData = () =>{
         const Headers = {
             headers: {
-                auth: localStorage.getItem('eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6ImE0NWY2ZDdmLWJlNDQtNDk3ZS05NGVlLTc1OTY3M2NhNWQxNiIsInJvbGUiOiJHVUVTVCIsImlhdCI6MTY1MjIwNTMwNiwiZXhwIjoxNjUyMjQ4NTA2fQ.3NRPQzGEiNCwIeiktU-0jVu-5-sCMJENvCtOJqBcHr0')
+                Authorization: localStorage.getItem('token')
             }
         }
         setIsLoading(true)
@@ -29,5 +29,5 @@ export const useRequestData = (url) =>{
     useEffect(()=>{
         getData()
     },[url])
-    return [data, isLoading,error]
+    return [data, isLoading,error,getData]
 }
