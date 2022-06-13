@@ -33,7 +33,8 @@ const convertDate = (date: string): string => {
     return `${arrDate[2]}-${arrDate[1]}-${arrDate[0]}`
 }
 export const createTask = async (title: string, description: string, limitDate: string, creatorUserId: string): Promise<any> => {
-    await connection("TodoListTask")
+    try{
+        await connection("TodoListTask")
         .insert({
             id: Date.now().toString(),
             title: title,
@@ -41,8 +42,12 @@ export const createTask = async (title: string, description: string, limitDate: 
             limit_date: convertDate(limitDate),
             creator_user_id: creatorUserId
         })
-        .into("TodoListTask")
+        
 
+    }catch(err:any){
+        throw new Error( err.sqlMessage || err.message)
+    }
+    
 }
 
 export const selectTableUserTask = async (): Promise<any> => {

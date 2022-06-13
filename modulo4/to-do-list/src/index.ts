@@ -30,7 +30,7 @@ app.post('/task', async (req: Request, res: Response) => {
       res.statusCode = 422
       throw new Error("Missing information, please check your task info")
     }
-    createTask(title, description, limitDate, creatorUserId)
+    await createTask(title, description, limitDate, creatorUserId)
     res.status(200).send({ message: "Task created successfully " })
   } catch (err: any) {
     res.send({ message: err.message })
