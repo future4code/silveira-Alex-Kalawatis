@@ -4,10 +4,10 @@ POST http://localhost:3003/user/signup
 Content-Type: application/json
 
 {
-    "name": "Alex",
-    "email": "alex@teste.com.br",
-    "password": "123456",
-    "role": "ADMIN"
+    "name": "Betina",
+    "email": "betina@teste.com.br",
+    "password": "29021996",
+    "role": "NORMAL"
 }
 ###
 # @name login
@@ -16,16 +16,35 @@ POST http://localhost:3003/user/login
 Content-Type: application/json
 
 {
-    "email": "alex@teste.com.br",
-    "password": "123456"
+    "email": "betina@teste.com.br",
+    "password": "29021996"
 }
 
 ###
-# @name getUserById
 
 @token = {{login.response.body.token}}
 
+
+###
+# @name getProfile
 GET http://localhost:3003/user/profile
 Content-Type: application/json
 Authorization: {{token}}
 
+###
+# @name getProfileById
+GET http://localhost:3003/user/profile/ce5d1fff-7c8b-437e-b27c-16879455be6a
+Content-Type: application/json
+Authorization: {{token}}
+
+###
+# @name createRecipe
+POST http://localhost:3003/recipe
+Content-Type: application/json
+Authorization: {{token}}
+
+{
+    "title": "Ovo Cozido",
+    "description": "Em uma panela coloque água em uma quantidade que seja suficiente para que os ovos fiquem totalmente cobertos. Agora acrescente os ovos e leve ao fogo, em temperatura alta. Aguarde até que eles fervam. É preciso que esteja borbulhando bastante. Quando estiver assim, pode desligar o fogo. Em seguida, tampe a panela para que o cozimento seja realizado por mais alguns minutos. O tempo vai depender do seu gosto: quem gosta da gema mais molinha não deve esperar muito, é preciso deixar apenas 5 minutos; se preferir bem dura e cozida, então, 15 minutos são suficientes; já aqueles que gostam dela entre um e outro extremo precisam de 10 minutos para deixar pronto os ovos cozidos. Escolha seu tempo de cozimento favorito.",
+    "created_at": "30/06/2022"
+}

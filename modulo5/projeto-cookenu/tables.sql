@@ -6,7 +6,7 @@ CREATE TABLE IF NOT EXISTS `cookenu-users`(
     password VARCHAR(255) NOT NULL
 );
 ALTER TABLE `cookenu-users` ADD COLUMN role VARCHAR(255) DEFAULT "NORMAL";
-CREATE TABLE IF NOT EXISTS `cookenu-recipes`(
+CREATE TABLE `cookenu-recipes`(
     id VARCHAR(255) PRIMARY KEY,
     title VARCHAR(255) NOT NULL,
     description TEXT NOT NULL,
@@ -14,3 +14,4 @@ CREATE TABLE IF NOT EXISTS `cookenu-recipes`(
     user_id VARCHAR(255),
     FOREIGN KEY(user_id) REFERENCES cookenu-users(id)
 );
+SELECT * FROM `cookenu-recipes`;

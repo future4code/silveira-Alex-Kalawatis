@@ -1,11 +1,11 @@
 import { Request, Response } from "express";
 import { UserDB } from "../data/UserDB";
-import { USER_ROLE } from "../model/User";
 import Authenticator from "../service/Authenticator";
 
 export interface UserProfile {
+    id:string,
     name:string,
-    role: USER_ROLE
+    email: string
 }
 
 const getProfile =async (req:Request, res : Response) => {
@@ -23,9 +23,9 @@ const getProfile =async (req:Request, res : Response) => {
         const userDb = new UserDB()
         
         const user = await userDb.getUserById(authenticationData.id)
-        const profile:UserProfile = {name:user.getName(), role:user.getRole()}
+        const profile:UserProfile = {id:user.getId(),name:user.getName(),email:user.getEmail()}
 
-        res.status(200).send({UserProfile:profile})
+        res.status(200).send({user:profile})
     } catch (error:any) {
         res.status(400).send(error.message)
     }

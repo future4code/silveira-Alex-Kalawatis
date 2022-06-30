@@ -10,7 +10,7 @@ const login =async (req:Request,res:Response) => {
         const authenticator = new Authenticator()
         const {email,password} = req.body
         const userDB = new UserDB()
-
+        
         if(!email || email.indexOf("@") === -1){
             res.statusCode = 422
             throw new Error("Invalid email")
@@ -33,7 +33,7 @@ const login =async (req:Request,res:Response) => {
 
         if(!comparePassword){
             res.statusCode = 401
-
+            throw new Error("Invalid Password")
         }
 
         const token = authenticator.generateToken({id:user.getId(),role:user.getRole()})
