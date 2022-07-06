@@ -20,7 +20,8 @@ export default class UserData extends BaseDatabase {
     }
     async insertUser(user:User){
         try {
-            await BaseDatabase.connection().insert(user)
+            
+            await BaseDatabase.connection(this.TABLE_NAME).insert(user)
         } catch (error:any) {
             throw new Error(error.sqlMessage || error.message)
         }

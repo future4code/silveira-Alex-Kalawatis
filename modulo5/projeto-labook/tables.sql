@@ -14,3 +14,4 @@ CREATE TABLE IF NOT EXISTS labook_posts(
          author_id VARCHAR(255),
          FOREIGN KEY (author_id) REFERENCES labook_users (id)
          );
+SELECT * FROM `labook_users`;

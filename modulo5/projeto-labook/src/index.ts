@@ -14,5 +14,14 @@ const userBusiness = new UserBusiness(
 )
 
 const userController = new UserController(userBusiness)
+//Create
+/* User */
 
-app.post('/user/signup', userController.signup)
+app.post('/user/signup', new UserController(userBusiness).signup)
+app.post('/user/login',userController.login)
+/* Post */
+//Read
+
+//Update
+
+//Delete

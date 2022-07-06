@@ -3,6 +3,7 @@ import User from "../model/User";
 import Authenticator from "../services/Authenticator";
 import { HashManager } from "../services/HashManager";
 import { IdGenerator } from "../services/IdGenerator";
+import { loginInputDTO } from "../types/loginInputDTO";
 import { signupInputDTO } from "../types/signupInputDTO";
 
 export default class UserBusiness {
@@ -37,5 +38,21 @@ export default class UserBusiness {
         const token = this.authenticator.generateToken({id})
         //retornar o token
         return token;
+    }
+    async login(input:loginInputDTO){
+        if(!input.email || input.email.indexOf("@")=== -1){
+            throw new Error("Email inválido")
+        }
+        if(!input.password || input.password.length < 6){
+            throw new Error("Senha inválida")
+        }
+        const userFromDB = await this.userData.findByEmail(input.email)
+        const hashCompare = await this.hashManager.compare(input.password,userFromDB.password)
+        if(!hashCompare){
+            throw new Error("Senha inválida")
+        }
+        const token = this.authenticator.generateToken({id:userFromDB.id})
+
+        return token
     }
 }
