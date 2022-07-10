@@ -9,7 +9,7 @@ export default class Post {
         private photo:string,
         private description:string,
         private type:POST_TYPE,
-        private created_at:string,
+        private created_at:Date,
         private author_id: string
     ){}
     
