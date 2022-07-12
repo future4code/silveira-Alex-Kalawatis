@@ -5,6 +5,10 @@
 #### Documentação API:
 em desenvolvimento.
 
+## Link da API:
+
+https://labook-alex-labenu.herokuapp.com/
+
 <br>
 
 ## Descrição do projeto:
