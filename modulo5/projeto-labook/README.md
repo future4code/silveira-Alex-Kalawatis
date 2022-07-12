@@ -3,11 +3,8 @@
 ### Projeto desenvolvido por Alex Maiolino Kalawatis
 
 #### Documentação API:
-em desenvolvimento.
 
-## Link da API:
-
-https://labook-alex-labenu.herokuapp.com/
+https://documenter.getpostman.com/view/20351383/UzQmxTzo
 
 <br>
 
