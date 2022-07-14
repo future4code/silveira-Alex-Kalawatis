@@ -1,0 +1,35 @@
+POST http://localhost:3003/user/signup
+Content-Type: application/json
+
+{
+    "name": "Alex",
+    "email": "alex@gmail.com",
+    "password": "123456"
+}
+
+###
+# @name login
+POST http://localhost:3003/user/login
+Content-Type: application/json
+
+{
+    "email": "alex@gmail.com",
+    "password": "123456"
+}
+###
+@token = {{login.response.body.token}}
+POST http://localhost:3003/post
+Content-Type: application/json
+Authorization: {{token}}
+
+{
+    "photo": "https://static.mundoeducacao.uol.com.br/mundoeducacao/conteudo_legenda/496162c1d358607c0bb9df9cc35ef41d.jpg",
+    "description": "Mar",
+    "created_at": "",
+    "type": "normal"
+}
+###
+
+GET http://localhost:3003/post/651eb44a-11c3-4fee-9bfa-fe73e662d483
+Content-Type: application/json
+Authorization: {{token}}
